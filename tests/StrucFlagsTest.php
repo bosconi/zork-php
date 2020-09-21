@@ -8,10 +8,10 @@
 namespace Itafroma\Zork\Tests;
 
 use Itafroma\Zork\Struc\Adv;
-use Itafroma\Zork\Struc\Object;
+use Itafroma\Zork\Struc\ZObject;
 use Itafroma\Zork\Struc\Room;
 use Itafroma\Zork\Struc\Syntax;
-use \PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use function Itafroma\Zork\atrz;
 use function Itafroma\Zork\atro;
 use function Itafroma\Zork\atrnn;
@@ -26,7 +26,7 @@ use function Itafroma\Zork\trc;
 use function Itafroma\Zork\tro;
 use function Itafroma\Zork\trz;
 
-class StrucFlagsTest extends PHPUnit_Framework_TestCase
+class StrucFlagsTest extends TestCase
 {
     /**
      * Tests Itafroma\Zork\trnn().
@@ -38,7 +38,7 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $obj->oflags = $bit;
 
-        $this->assertTrue(trnn($obj, $bit));
+        self::assertTrue(trnn($obj, $bit));
     }
 
     /**
@@ -51,7 +51,7 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $rm->rbits = $bit;
 
-        $this->assertTrue(rtrnn($rm, $bit));
+        self::assertTrue(rtrnn($rm, $bit));
     }
 
     /**
@@ -64,7 +64,7 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $rm->rglobal = $bit;
 
-        $this->assertTrue(gtrnn($rm, $bit));
+        self::assertTrue(gtrnn($rm, $bit));
     }
 
     /**
@@ -78,8 +78,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
         $rm->rbits = $bit;
         $return = rtrz($rm, $bit);
 
-        $this->assertEquals($rm->rbits, $return);
-        $this->assertEquals($rm->rbits, 0);
+        self::assertEquals($rm->rbits, $return);
+        self::assertEquals($rm->rbits, 0);
     }
 
     /**
@@ -93,8 +93,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
         $obj->oflags = $bit;
         $return = trc($obj, $bit);
 
-        $this->assertEquals($obj->oflags, $return);
-        $this->assertEquals($obj->oflags, 0);
+        self::assertEquals($obj->oflags, $return);
+        self::assertEquals($obj->oflags, 0);
     }
 
     /**
@@ -108,8 +108,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
         $obj->oflags = $bit;
         $return = trz($obj, $bit);
 
-        $this->assertEquals($obj->oflags, $return);
-        $this->assertEquals($obj->oflags, 0);
+        self::assertEquals($obj->oflags, $return);
+        self::assertEquals($obj->oflags, 0);
     }
 
     /**
@@ -122,8 +122,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $return = tro($obj, $bit);
 
-        $this->assertEquals($obj->oflags, $return);
-        $this->assertEquals($obj->oflags, $bit);
+        self::assertEquals($obj->oflags, $return);
+        self::assertEquals($obj->oflags, $bit);
     }
 
     /**
@@ -136,8 +136,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $return = rtro($rm, $bit);
 
-        $this->assertEquals($rm->rbits, $return);
-        $this->assertEquals($rm->rbits, $bit);
+        self::assertEquals($rm->rbits, $return);
+        self::assertEquals($rm->rbits, $bit);
     }
 
     /**
@@ -151,8 +151,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
         $rm->rbits = $bit;
         $return = rtrc($rm, $bit);
 
-        $this->assertEquals($rm->rbits, $return);
-        $this->assertEquals($rm->rbits, 0);
+        self::assertEquals($rm->rbits, $return);
+        self::assertEquals($rm->rbits, 0);
     }
 
     /**
@@ -165,7 +165,7 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $adv->aflags = $bit;
 
-        $this->assertTrue(atrnn($adv, $bit));
+        self::assertTrue(atrnn($adv, $bit));
     }
 
     /**
@@ -179,8 +179,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
         $adv->aflags = $bit;
         $return = atrz($adv, $bit);
 
-        $this->assertEquals($adv->aflags, $return);
-        $this->assertEquals($adv->aflags, 0);
+        self::assertEquals($adv->aflags, $return);
+        self::assertEquals($adv->aflags, 0);
     }
 
     /**
@@ -193,8 +193,8 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $return = atro($adv, $bit);
 
-        $this->assertEquals($adv->aflags, $return);
-        $this->assertEquals($adv->aflags, $bit);
+        self::assertEquals($adv->aflags, $return);
+        self::assertEquals($adv->aflags, $bit);
     }
 
     /**
@@ -207,7 +207,7 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     {
         $syntax->sflags = $bit;
 
-        $this->assertTrue(strnn($syntax, $bit));
+        self::assertTrue(strnn($syntax, $bit));
     }
 
 
@@ -217,7 +217,7 @@ class StrucFlagsTest extends PHPUnit_Framework_TestCase
     public function objectFlagsProvider()
     {
         return [
-            [new Object(), 1 << 2],
+            [new ZObject(), 1 << 2],
         ];
     }
 
